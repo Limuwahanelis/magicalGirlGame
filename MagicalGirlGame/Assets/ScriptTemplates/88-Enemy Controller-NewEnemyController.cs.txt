@@ -1,0 +1,30 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+
+public class #SCRIPTNAME# : EnemyController
+{
+
+    protected #ENEMYNAME#Context _context;
+
+    protected override void Start()
+    {
+        base.Start();
+    }
+
+    override protected void Initialize()
+    {
+         base.Initialize();
+        _context = new #ENEMYNAME#Context
+        {
+            ChangeNPCState = ChangeState,
+            animMan = _enemyAnimationManager,
+        };
+
+        EnemyState newState = GetState(Type.GetType(_initialStateType));
+        newState.SetUpState(_context);
+        _currentNPCState = newState;
+    }
+}
