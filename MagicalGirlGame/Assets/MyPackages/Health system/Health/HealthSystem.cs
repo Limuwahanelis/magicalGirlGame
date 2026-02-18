@@ -25,12 +25,16 @@ public class HealthSystem : MonoBehaviour,IDamagable
 
 
     // Start is called before the first frame update
-    protected void Start()
+    protected virtual void Start()
     {
-        _hpBar.SetMaxHealth(_maxHP);
-        _currentHP = _maxHP;
-        _hpBar.SetMaxHealth(_maxHP);
-        _hpBar.SetHealth(_maxHP);
+
+        //_currentHP = _maxHP;
+        if (_hpBar != null)
+        {
+            _hpBar.SetMaxHealth(_maxHP);
+            _hpBar.SetHealth(_maxHP);
+        }
+
     }
     public void SetMacHP(int value,bool updateCurrentHP=true)
     {

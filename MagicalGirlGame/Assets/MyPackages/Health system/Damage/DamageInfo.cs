@@ -12,19 +12,24 @@ public struct DamageInfo
         ENEMY = 1,
         MISSILE = 2,
         TRAPS = 4,
-        SHADOW_SPIKE = 8,
-        PLAYER = 16,
-        BOSS = 32,
+        PLAYER = 8,
+        YING = 16,
+        YANG = 32,
+        FIRE = 64,
+        WATER = 128,
+        ELECTRICITY = 256,
         ALL = ~0,
     }
 
     public int dmg;
     public Vector3 dmgPosition;
     public Collider2D[] involvedColliders;
-    public DamageInfo(int dmg,Vector3 dmgPosition,Collider2D[] colliders=null) 
+    public DamageType damageType;
+    public DamageInfo(int dmg,Vector3 dmgPosition, DamageType damageType, Collider2D[] colliders=null) 
     {
         this.dmg = dmg;
         this.dmgPosition = dmgPosition;
         involvedColliders = colliders;
+        this.damageType = damageType;
     }
 }

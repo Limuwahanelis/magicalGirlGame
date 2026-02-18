@@ -1,22 +1,25 @@
-﻿using MyBox;
+using MyBox;
 using System.Collections;
 using Unity.Mathematics;
-#if UNITY_EDITOR
 using UnityEditor;
-#endif
 using UnityEngine;
+using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
 
-public class StandardHealthBar : HealthBar
+public class YingYangBar : HealthBar
 {
     private MaterialPropertyBlock _propertyBlock;
-    private Renderer _renderer;
+    [SerializeField] Renderer _renderer;
     [SerializeField] int _maxHP = 100;
     [SerializeField] bool _startWithNotMaxHP;
-    [SerializeField,ConditionalField("_startWithNotMaxHP")] int _currentHP;
+    [SerializeField, ConditionalField("_startWithNotMaxHP")] int _currentHP;
     [SerializeField] bool _lazyHealthBar;
     [SerializeField] float _timeToMoveHealth;
     [SerializeField] int _lazyHPLostPerSecond;
-    [SerializeField] float _lengthPerHP=1f;
+    [SerializeField] float _lengthPerHP = 1f;
+    [SerializeField] GameObject _rightYinYangBorder;
+    [SerializeField] GameObject _leftYinYangBorder;
+
     private float _lazyHP;
     private bool _initialized = false;
     bool _isReducingHP;
@@ -28,11 +31,17 @@ public class StandardHealthBar : HealthBar
     {
         if (_initialized) return;
         if (_propertyBlock == null) _propertyBlock = new MaterialPropertyBlock();
-        _renderer = GetComponent<Renderer>();
         _renderer.SetPropertyBlock(_propertyBlock);
         _lazyHP = _currentHP = _maxHP;
         _initialized = true;
         if (_startWithNotMaxHP) SetHealth(_currentHP);
+    }
+    public void SetYinyangBorders(int leftBorder,int rightBorder)
+    {
+        float leftBorderPosx = (leftBorder/(float)_maxHP) * _renderer.gameObject.transform.localScale.x - _renderer.gameObject.transform.localScale.x / 2;
+        float rightBorderPosx = (rightBorder / (float)_maxHP) * _renderer.gameObject.transform.localScale.x - _renderer.gameObject.transform.localScale.x / 2;
+        _leftYinYangBorder.transform.localPosition = new Vector3(leftBorderPosx, 0, 0) ;
+        _rightYinYangBorder.transform.localPosition = new Vector3(rightBorderPosx, 0, 0);
     }
     public override void AdjustForLength()
     {
@@ -82,7 +91,7 @@ public class StandardHealthBar : HealthBar
 
 
 #if UNITY_EDITOR
-    [CustomEditor(typeof(StandardHealthBar))]
+    [CustomEditor(typeof(YingYangBar))]
     public class HPEditor : Editor
     {
         SerializedProperty _currentValue;
