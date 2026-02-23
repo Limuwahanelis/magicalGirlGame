@@ -7,6 +7,8 @@ public class TriggerDetection2D : MonoBehaviour
 #if UNITY_EDITOR
     [SerializeField] bool _debug;
 #endif
+    public UnityEvent<GameObject> OnGameObjectDetected;
+    public UnityEvent<GameObject> OnGameObjectLeft;
     public UnityEvent<Collider2D> OnColliderDetected;
     public UnityEvent<Collider2D> OnColliderLeft;
     List<TriggerDetectable> _detectables = new List<TriggerDetectable>();
@@ -38,6 +40,7 @@ public class TriggerDetection2D : MonoBehaviour
             detectable.OnDisabled.AddListener(DetectableDisable);
         }
         OnColliderDetected?.Invoke(collision);
+        OnGameObjectDetected?.Invoke(collision.gameObject);
     }
     private void OnTriggerStay2D(Collider2D other)
     {
@@ -58,6 +61,7 @@ public class TriggerDetection2D : MonoBehaviour
 #endif
             _collidersInStay.Add(other);
             OnColliderDetected?.Invoke(other);
+            OnGameObjectDetected?.Invoke(other.gameObject);
         }
 
     }
@@ -73,6 +77,7 @@ public class TriggerDetection2D : MonoBehaviour
             detectable.OnDisabled.RemoveListener(DetectableDisable);
         }
         OnColliderLeft?.Invoke(other);
+        OnGameObjectLeft.Invoke(other.gameObject);
     }
 
     private void DetectableDisable(TriggerDetectable detectable)

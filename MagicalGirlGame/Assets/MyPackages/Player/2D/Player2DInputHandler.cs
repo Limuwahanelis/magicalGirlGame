@@ -51,18 +51,18 @@ public class Player2DInputHandler : MonoBehaviour
     private void OnAttack(InputValue value)
     {
         if (PauseSettings.IsGamePaused) return;
-        if (_useCommands)
-        {
-            _inputStack.CurrentCommand = new AttackInputCommand(_player.CurrentPlayerState);
-            if (_direction.y > 0) _inputStack.CurrentCommand = new AttackInputCommand(_player.CurrentPlayerState, PlayerCombat.AttackModifiers.UP_ARROW);
-            if (_direction.y < 0) _inputStack.CurrentCommand = new AttackInputCommand(_player.CurrentPlayerState, PlayerCombat.AttackModifiers.DOWN_ARROW);
-        }
-        else
-        {
+        //if (_useCommands)
+        //{
+        //    _inputStack.CurrentCommand = new AttackInputCommand(_player.CurrentPlayerState);
+        //    if (_direction.y > 0) _inputStack.CurrentCommand = new AttackInputCommand(_player.CurrentPlayerState, PlayerCombat.AttackModifiers.UP_ARROW);
+        //    if (_direction.y < 0) _inputStack.CurrentCommand = new AttackInputCommand(_player.CurrentPlayerState, PlayerCombat.AttackModifiers.DOWN_ARROW);
+        //}
+        //else
+        //{
 
-            if (_direction.y == 0) _player.CurrentPlayerState.Attack();
-            else if (_direction.y > 0) _player.CurrentPlayerState.Attack(PlayerCombat.AttackModifiers.UP_ARROW);
-            else if (_direction.y < 0) _player.CurrentPlayerState.Attack(PlayerCombat.AttackModifiers.DOWN_ARROW);
-        }
+        //    if (_direction.y == 0) _player.CurrentPlayerState.Attack();
+        //    else if (_direction.y > 0) _player.CurrentPlayerState.Attack(PlayerCombat.AttackModifiers.UP_ARROW);
+        //    else if (_direction.y < 0) _player.CurrentPlayerState.Attack(PlayerCombat.AttackModifiers.DOWN_ARROW);
+        //}
     }
 }

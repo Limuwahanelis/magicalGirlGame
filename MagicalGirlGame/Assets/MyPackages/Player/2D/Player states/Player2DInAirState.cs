@@ -46,7 +46,7 @@ public class Player2DInAirState : Player2DState
         }
 
     }
-    public override void Attack(PlayerCombat.AttackModifiers modifier = PlayerCombat.AttackModifiers.NONE)
+    public override void Attack(PlayerSpells.SpellTypes spellType, PlayerSpells.SpellForm spellForm)
     {
         //_stateTypeToChangeFromInputCommand = PlayerAttackingState.StateType;
     }

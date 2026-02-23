@@ -13,6 +13,8 @@ public class HealthSystem : MonoBehaviour,IDamagable
     public int CurrentHP => _currentHP;
     public int MaxHP => _maxHP;
 
+    public Transform MainBody => transform;
+
     [SerializeField] protected Collider2D[] _colliders;
     [SerializeField] protected bool _isInvincible;
     [SerializeField] protected HealthBar _hpBar;
@@ -55,6 +57,7 @@ public class HealthSystem : MonoBehaviour,IDamagable
     {
         if (_isInvincibleToDamage) return;
         if (!IsAlive) return;
+        if (info.damageType == DamageInfo.DamageType.YING || info.damageType == DamageInfo.DamageType.YANG) return;
         _currentHP -= info.dmg;
         if (_hpBar != null) _hpBar.SetHealth(_currentHP);
         OnHitEvent?.Invoke(info);
@@ -77,10 +80,10 @@ public class HealthSystem : MonoBehaviour,IDamagable
         if (OnDeath == null) return false;
          return true;
     }
-    protected void InvokeOnDeathEvent()
-    {
-        OnDeath?.Invoke(this);
-    }
+    //protected void InvokeOnDeathEvent()
+    //{
+    //    OnDeath?.Invoke(this);
+    //}
     public virtual void Kill()
     {
         if (!IsDeathEventSubscribedTo())
@@ -88,7 +91,7 @@ public class HealthSystem : MonoBehaviour,IDamagable
             Destroy(gameObject);
             Destroy(_hpBar.gameObject);
         }
-        else OnDeath?.Invoke(this);
+        else OnDeath?.Invoke(this,new DamageInfo());
     }
     IEnumerator DamageInvincibilityCor()
     {

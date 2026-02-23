@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 public abstract class Player2DState: PlayerStateMain
@@ -17,6 +18,22 @@ public abstract class Player2DState: PlayerStateMain
     public virtual void SetUpState(Player2DContext context)
     {
         _context = context;
+    }
+    public override void Attack(PlayerSpells.SpellTypes spellType, PlayerSpells.SpellForm spellForm)
+    {
+        switch (spellForm)
+        {
+            case PlayerSpells.SpellForm.NORMAL:
+                {
+                    switch (spellType)
+                    {
+                        case PlayerSpells.SpellTypes.FIRE: ChangeState(Player2DCastingFireSpellState.StateType); break;
+                        case PlayerSpells.SpellTypes.ELECTRICYTY: ChangeState(Player2DCastingElectricitySpellState.StateType); break;
+                    }
+                    break;
+                }
+            case PlayerSpells.SpellForm.BEAM: ChangeState(Player2DCastingBeamSpellState.StateType); break;
+        }
     }
     public override void Push(PushInfo pushInfo)
     {

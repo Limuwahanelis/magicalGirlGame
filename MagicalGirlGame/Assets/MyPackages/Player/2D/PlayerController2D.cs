@@ -14,6 +14,7 @@ public class PlayerController2D : PlayerControllerMain
     [SerializeField] PlayerMovement2D _playerMovement;
     [SerializeField] AudioEventPlayer _playerAudioEventPlayer;
     [SerializeField] PlayerChecks2D _playerChecks;
+    [SerializeField] PlayerSpells _spells;
     //[SerializeField] PlayerCombat _playerCombat;
     //[SerializeField] PlayerCollisions _playerCollisions;
     [SerializeField] PlayerHealthSystem _playerHealthSystem;
@@ -42,6 +43,7 @@ public class PlayerController2D : PlayerControllerMain
             audioEventPlayer = _playerAudioEventPlayer,
             coroutineHolder = this,
             checks = _playerChecks,
+            spells = _spells,
             //combat = _playerCombat,
             //collisions = _playerCollisions,
         };

@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class AttackInputCommand : InputCommand
 {
-    private PlayerCombat.AttackModifiers _attackModifier;
-    public AttackInputCommand(PlayerStateMain playerState, PlayerCombat.AttackModifiers attackModifier=PlayerCombat.AttackModifiers.NONE) : base(playerState)
+    private PlayerSpells.SpellTypes _spellType;
+    private PlayerSpells.SpellForm _spellForm;
+    public AttackInputCommand(PlayerStateMain playerState, PlayerSpells.SpellTypes spellType, PlayerSpells.SpellForm spellForm) : base(playerState)
     {
-        _attackModifier = attackModifier;
+        _spellType = spellType;
+        _spellForm = spellForm;
     }
 
     public override void Execute()
     {
-        _playerState.Attack(_attackModifier);
+        _playerState.Attack(_spellType, _spellForm);
     }
 
     public override void Undo()

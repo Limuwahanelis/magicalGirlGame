@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public abstract class PlayerStateMain
@@ -7,7 +8,7 @@ public abstract class PlayerStateMain
     public virtual void FixedUpdate() { }
     public virtual void Move(Vector2 direction) { }
     public virtual void Jump() { }
-    public virtual void Attack(PlayerCombat.AttackModifiers attackModifier = PlayerCombat.AttackModifiers.NONE) { }
+    public virtual void Attack(PlayerSpells.SpellTypes spellType, PlayerSpells.SpellForm spellForm) {}
     public virtual void Push(PushInfo pushInfo) { /*ChangeState(PlayerPushedState.StateType);*/}
     public abstract void InterruptState();
 
