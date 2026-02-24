@@ -9,6 +9,7 @@ public abstract class PlayerStateMain
     public virtual void Move(Vector2 direction) { }
     public virtual void Jump() { }
     public virtual void Attack(PlayerSpells.SpellTypes spellType, PlayerSpells.SpellForm spellForm) {}
+    public virtual void EndAttack() { }
     public virtual void Push(PushInfo pushInfo) { /*ChangeState(PlayerPushedState.StateType);*/}
     public abstract void InterruptState();
 

@@ -1944,6 +1944,10 @@ PrefabInstance:
       propertyPath: _spells
       value: 
       objectReference: {fileID: 1914878556}
+    - target: {fileID: 3888320209090828506, guid: e8c1e2c7008d1ec4aaba34cafb845363, type: 3}
+      propertyPath: _printState
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4312064760174875673, guid: e8c1e2c7008d1ec4aaba34cafb845363, type: 3}
       propertyPath: m_Name
       value: Player 2D
@@ -1996,6 +2000,10 @@ PrefabInstance:
       propertyPath: _playerSpell
       value: 
       objectReference: {fileID: 1914878556}
+    - target: {fileID: 7432872548910614533, guid: e8c1e2c7008d1ec4aaba34cafb845363, type: 3}
+      propertyPath: _attackAction
+      value: 
+      objectReference: {fileID: -2160842734353686287, guid: 20df9782707767a4cb5d562c70463212, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

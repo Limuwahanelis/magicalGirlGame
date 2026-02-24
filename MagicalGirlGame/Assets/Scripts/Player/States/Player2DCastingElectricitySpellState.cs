@@ -23,7 +23,11 @@ public class Player2DCastingElectricitySpellState : Player2DState
         _electricitySpell = _context.spells.AvailableSpells[PlayerSpells.SpellTypes.ELECTRICYTY] as ElectricitySpell;
         _electricitySpell.StartAttack();
     }
-
+    public override void EndAttack()
+    {
+        _electricitySpell?.EndAttack();
+        ChangeState(Player2DIdleState.StateType);
+    }
     public override void InterruptState()
     {
      

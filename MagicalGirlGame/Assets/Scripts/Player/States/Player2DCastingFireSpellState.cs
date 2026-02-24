@@ -23,7 +23,11 @@ public class Player2DCastingFireSpellState : Player2DState
         _fireSpell= _context.spells.AvailableSpells[PlayerSpells.SpellTypes.FIRE] as FireSpell;
         _fireSpell.StartAttack();
     }
-
+    public override void EndAttack()
+    {
+        _fireSpell?.EndAttack();
+        ChangeState(Player2DIdleState.StateType);
+    }
     public override void InterruptState()
     {
      

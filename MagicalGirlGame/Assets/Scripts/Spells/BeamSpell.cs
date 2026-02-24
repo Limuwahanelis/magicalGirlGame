@@ -66,7 +66,7 @@ public class BeamSpell : ContinousSpell
         beamDir = beamDir.normalized;
         float angle = Vector2.SignedAngle(Vector2.right, beamDir);
         _hit = Physics2D.BoxCastAll(_beamTransform.position, _beamTrigger.size, Vector2.SignedAngle(Vector2.right, beamDir), beamDir, 20f, _layerMaskToHit);
-        Logger.Log(angle);
+       // Logger.Log(angle);
         //Physics2D.RaycastAll()
         //_hit = Physics2D.Raycast(_beamTransform.position, beamDir, 20f, _layerMaskToHit);
         if (_hit.Length>0)
@@ -87,13 +87,14 @@ public class BeamSpell : ContinousSpell
     }
     public override void SetSpellType(DamageInfo.DamageType type, ElementInfo info)
     {
+        Logger.Log(type);
         _damageType = type;
         _elementInfo = info;
     }
 
     public override void EndAttack()
     {
-        _beamTransform.localScale = Vector2.zero;
+        _beamTransform.localScale = new Vector2(_beamTransform.localScale.x, 0);
     }
     IEnumerator DamageCor()
     {

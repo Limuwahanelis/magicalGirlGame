@@ -39,7 +39,7 @@
                     "id": "ce60071d-8419-41f8-acc2-a4103d82e040",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold(duration=0.01),Press",
                     "initialStateCheck": false
                 },
                 {
@@ -230,7 +230,7 @@
                 {
                     "name": "",
                     "id": "33414daf-1a60-42a8-91ad-c80c7ced0e63",
-                    "path": "<Keyboard>/z",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

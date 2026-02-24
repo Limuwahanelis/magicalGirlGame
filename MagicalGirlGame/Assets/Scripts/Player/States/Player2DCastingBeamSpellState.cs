@@ -25,7 +25,11 @@ public class Player2DCastingBeamSpellState : Player2DState
         _beamSpell.StartAttack();
 
     }
-
+    public override void EndAttack()
+    {
+        _beamSpell?.EndAttack();
+        ChangeState(Player2DIdleState.StateType);
+    }
     public override void InterruptState()
     {
      
