@@ -15,4 +15,11 @@ public class PushInfo
         this.pushType = pushType;
         this.pushForce = pushForce;
     }
+    public PushInfo(Vector3 pushpos, float pushForce)
+    {
+        this.pushPosition = pushpos;
+        this.pushForce = pushForce;
+        pushType = DamageInfo.DamageType.NONE;
+        involvedColliders = null;
+    }
 }

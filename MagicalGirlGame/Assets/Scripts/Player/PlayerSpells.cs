@@ -64,6 +64,11 @@ public class PlayerSpells : MonoBehaviour
     [SerializeField] private float _beamAattackCooldown = 0.25f;
     [SerializeField] LayerMask _toHit;
     [SerializeField] private AudioEvent _beamAttackAudtioEvent;
+
+    [Header("Wind"), Space]
+    [SerializeField] private ItemSpawner _windPushSpawner;
+    [SerializeField] private AudioEvent _windSpellAudtioEvent;
+    [SerializeField] private Transform _windSpellSpawnTran;
     //[SerializeField] List<ParticleSystem> _paritcles = new List<ParticleSystem>();
 
     List<IDamagable> _damageablesInRange = new List<IDamagable>();
@@ -85,6 +90,10 @@ public class PlayerSpells : MonoBehaviour
             {
                 SpellTypes.BEAM,
                 new BeamSpell(_beamTransform,_damageablesInRange,_beamTrigger,_beamTransform,2,_beamAattackCooldown,_beamAttackAudtioEvent,_loopedAudioSource,0.2f,_toHit)
+            },
+            {
+                SpellTypes.WIND,
+                new WindSpell(_windSpellAudtioEvent,_loopedAudioSource,_windSpellSpawnTran,_windPushSpawner)
             }
         };
     }

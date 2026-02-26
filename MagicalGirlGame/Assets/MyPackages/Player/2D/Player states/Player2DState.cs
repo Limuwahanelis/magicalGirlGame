@@ -29,6 +29,7 @@ public abstract class Player2DState: PlayerStateMain
                     {
                         case PlayerSpells.SpellTypes.FIRE: ChangeState(Player2DCastingFireSpellState.StateType); break;
                         case PlayerSpells.SpellTypes.ELECTRICYTY: ChangeState(Player2DCastingElectricitySpellState.StateType); break;
+                        case PlayerSpells.SpellTypes.WIND: ChangeState(Player2DCastingWindSpellState.StateType); break;
                     }
                     break;
                 }

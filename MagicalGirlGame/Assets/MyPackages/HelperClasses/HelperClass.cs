@@ -13,8 +13,10 @@ public class HelperClass : MonoBehaviour
     /// Position of mouse win world (has to be set by SetMousePosWorld()).
     /// </summary>
     public static Vector3 MousPosWorld => _mousePosWorld;
+    public static Vector3 MousPosWorld2D => _mousePosWorld2D;
     private static Vector2 _mousePosScreen;
     private static Vector3 _mousePosWorld;
+    private static Vector3 _mousePosWorld2D;
     private static Camera _camera2D;
     public static void SetMousePos(Vector2 pos)
     {
@@ -23,6 +25,8 @@ public class HelperClass : MonoBehaviour
     public static void SetMousePosWorld(Camera cam)
     {
         _mousePosWorld = cam.ScreenToWorldPoint(MousePosScreen);
+        _mousePosWorld2D = _mousePosWorld;
+        _mousePosWorld2D.z = 0;
     }
     public static Vector3 GetMousePosWorld(Camera cam)
     {

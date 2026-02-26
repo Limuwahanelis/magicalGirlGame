@@ -119,6 +119,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &35556695
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 35556697}
+  - component: {fileID: 35556696}
+  m_Layer: 0
+  m_Name: Wind push spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &35556696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35556695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c98898f406e341045b63c6d5c8138bf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemPrefab: {fileID: 2349404052286966783, guid: aff8dd3819593af4ab6f73e6a9a7aa39, type: 3}
+--- !u!4 &35556697
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35556695}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.925946, y: 3.342035, z: -0.08422924}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &211271426
 GameObject:
   m_ObjectHideFlags: 0
@@ -1201,6 +1246,37 @@ Transform:
   - {fileID: 2146724323}
   m_Father: {fileID: 1914878557}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &975256010
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 975256011}
+  m_Layer: 0
+  m_Name: Wind push spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &975256011
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975256010}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.06, y: 0.99, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1914878554}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1024782957
 GameObject:
   m_ObjectHideFlags: 0
@@ -1215,6 +1291,7 @@ GameObject:
   - component: {fileID: 1024782960}
   - component: {fileID: 1024782959}
   - component: {fileID: 1024782958}
+  - component: {fileID: 1024782964}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Untagged
@@ -1291,14 +1368,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1024782957}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0
+  m_LinearDamping: 0.1
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1408,6 +1485,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1024782964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024782957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab7d817128a3d8548952930079cb0245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rb2D: {fileID: 1024782960}
 --- !u!1001 &1151266393
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1816,6 +1906,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1592970330
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1592970331}
+  m_Layer: 0
+  m_Name: WindPush
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1592970331
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592970330}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.575041, y: 1.1720809, z: -0.113152854}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1627809850 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8803515642892216194, guid: 4279a49eddb609341ac3e7d7718ca812, type: 3}
@@ -2016,6 +2137,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4550451307274318689, guid: e8c1e2c7008d1ec4aaba34cafb845363, type: 3}
       insertIndex: -1
       addedObject: {fileID: 211271427}
+    - targetCorrespondingSourceObject: {fileID: 4550451307274318689, guid: e8c1e2c7008d1ec4aaba34cafb845363, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 975256011}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8041190159745886158, guid: e8c1e2c7008d1ec4aaba34cafb845363, type: 3}
       insertIndex: -1
@@ -2080,6 +2204,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16
   _beamAttackAudtioEvent: {fileID: 0}
+  _windPushSpawner: {fileID: 35556696}
+  _windSpellAudtioEvent: {fileID: 0}
+  _windSpellSpawnTran: {fileID: 975256011}
 --- !u!4 &1914878557 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6739533048886753040, guid: e8c1e2c7008d1ec4aaba34cafb845363, type: 3}
@@ -2206,3 +2333,5 @@ SceneRoots:
   - {fileID: 1530981806}
   - {fileID: 1024782963}
   - {fileID: 477524353}
+  - {fileID: 1592970331}
+  - {fileID: 35556697}
