@@ -16,6 +16,7 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField] GameEventSO _pauseEvent;
     [SerializeField] PlayerSpells _playerSpell;
     [SerializeField] InputActionReference _attackAction;
+    [SerializeField] ConstructPlacement _constructPlacement;
     private Vector2 _direction;
     int _spellFormCount;
     // Start is called before the first frame update
@@ -69,11 +70,18 @@ public class PlayerInputHandler : MonoBehaviour
     }
     private void OnSpellForm(InputValue value)
     {
-        int spellFormindexToSelect = ((int)_playerSpell.SelectedSpellForm) + (int)value.Get<float>();
-        if (spellFormindexToSelect > _spellFormCount) spellFormindexToSelect = 1;
-        else if (spellFormindexToSelect < 1) spellFormindexToSelect = _spellFormCount;
+        if (_constructPlacement.ConstructToplace != null)
+        {
+            _constructPlacement.RotateConstruct();
+        }
+        else
+        {
+            int spellFormindexToSelect = ((int)_playerSpell.SelectedSpellForm) + (int)value.Get<float>();
+            if (spellFormindexToSelect > _spellFormCount) spellFormindexToSelect = 1;
+            else if (spellFormindexToSelect < 1) spellFormindexToSelect = _spellFormCount;
 
-        _playerSpell.SelectSpellForm(spellFormindexToSelect);
+            _playerSpell.SelectSpellForm(spellFormindexToSelect);
+        }
     }
     //private void OnAttack(InputValue value)
     //{

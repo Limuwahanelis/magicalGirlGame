@@ -69,4 +69,5 @@ public class HelperClass : MonoBehaviour
         int seconds = remainingSeconds % 60;
         return string.Format("{0:00},{1:00}:{2:00}", hours,minutes, seconds);
     }
+    public static bool IsInLayerMask(GameObject obj, LayerMask mask) => (mask.value & (1 << obj.layer)) != 0;
 }

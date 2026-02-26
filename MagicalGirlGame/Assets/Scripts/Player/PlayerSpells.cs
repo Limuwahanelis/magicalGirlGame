@@ -71,6 +71,7 @@ public class PlayerSpells : MonoBehaviour
     [SerializeField] private Transform _windSpellSpawnTran;
     //[SerializeField] List<ParticleSystem> _paritcles = new List<ParticleSystem>();
 
+
     List<IDamagable> _damageablesInRange = new List<IDamagable>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -123,15 +124,21 @@ public class PlayerSpells : MonoBehaviour
 
     public void SetEnemyForAttack(GameObject enemy)
     {
-        _damageablesInRange.Add(enemy.GetComponent<IDamagable>());
-        enemy.GetComponent<IDamagable>().OnDeath += OnEnemyDied;
-        Logger.Log("ADDed");
+        if (enemy.GetComponent<IDamagable>() != null)
+        {
+            _damageablesInRange.Add(enemy.GetComponent<IDamagable>());
+            enemy.GetComponent<IDamagable>().OnDeath += OnEnemyDied;
+            Logger.Log("ADDed");
+        }
     }
     public void RemoveEnemyFromAttack(GameObject enemy)
     {
-        _damageablesInRange.Remove(enemy.GetComponent<IDamagable>());
-        enemy.GetComponent<IDamagable>().OnDeath -= OnEnemyDied;
-        Logger.Log("Removed");
+        if (_damageablesInRange.Contains(enemy.GetComponent<IDamagable>()))
+        {
+            _damageablesInRange.Remove(enemy.GetComponent<IDamagable>());
+            enemy.GetComponent<IDamagable>().OnDeath -= OnEnemyDied;
+            Logger.Log("Removed");
+        }
     }
     private void OnEnemyDied(IDamagable damagable, DamageInfo info)
     {

@@ -283,6 +283,28 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "",
+                    "id": "68d02108-18fe-4b2b-b4b5-360bb5a687df",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "Scale(factor=5)",
+                    "groups": "",
+                    "action": "Spell",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "226b0ca5-4c94-4b95-9e83-fbb025c67b2a",
+                    "path": "<Keyboard>/6",
+                    "interactions": "",
+                    "processors": "Scale(factor=6)",
+                    "groups": "",
+                    "action": "Spell",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "1D Axis",
                     "id": "6d916f5d-b0ac-4864-94e5-ce2decc7b480",
                     "path": "1DAxis",

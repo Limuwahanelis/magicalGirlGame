@@ -12,6 +12,7 @@ public class Player2DContext
     public AudioEventPlayer audioEventPlayer;
     public PlayerChecks2D checks;
     public PlayerSpells spells;
+    public ConstructPlacement constructPlacement;
 
     public PushInfo pushInfo;
 
