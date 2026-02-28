@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c950ffcc4d52435459a2407e89036025, type: 3}
   m_Name: Electricity
   m_EditorClassIdentifier: 
+  _yinYangDamage: 4
+  _attackCooldown: 0.2
+  _damage: 4
+  _yinYangDamageType: 32

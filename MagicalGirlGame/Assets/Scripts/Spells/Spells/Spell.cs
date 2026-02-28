@@ -7,6 +7,9 @@ public class ParticleListWrapper
 }
 public abstract class Spell 
 {
+    protected DamageInfo.DamageType _damageType;
+    public virtual void SetSpellType(DamageInfo.DamageType type, ElementInfo info)
+    { }
     public abstract void StartAttack();
     public abstract void Attack();
     public abstract void EndAttack();

@@ -19,6 +19,7 @@ public class Player2DPlacingConstructState : Player2DState
     public override void SetUpState(Player2DContext context)
     {
         base.SetUpState(context);
+        TimeControl.SetTimeStop(true);
         _context.constructPlacement.SpawnConstruct();
     }
     public override void Attack(PlayerSpells.SpellTypes spellType, PlayerSpells.SpellForm spellForm)
@@ -26,11 +27,12 @@ public class Player2DPlacingConstructState : Player2DState
         if (_context.constructPlacement.ConstructToplace.CanBePlaced)
         {
             _context.constructPlacement.PlaceConstruct();
+            TimeControl.SetTimeStop(false);
             ChangeState(Player2DIdleState.StateType);
         }
     }
     public override void InterruptState()
     {
-     
+        TimeControl.SetTimeStop(false);
     }
 }

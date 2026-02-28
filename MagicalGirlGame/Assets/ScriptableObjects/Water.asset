@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c950ffcc4d52435459a2407e89036025, type: 3}
   m_Name: Water
   m_EditorClassIdentifier: 
-  _yinYangDamage: 0
-  _attackCooldown: 0
-  _damage: 0
+  _yinYangDamage: 2
+  _attackCooldown: 0.2
+  _damage: 2
+  _yinYangDamageType: 16

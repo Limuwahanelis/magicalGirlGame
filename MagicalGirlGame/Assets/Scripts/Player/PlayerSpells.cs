@@ -56,6 +56,11 @@ public class PlayerSpells : MonoBehaviour
     [SerializeField] List<ParticleListWrapper> _allparticles = new List<ParticleListWrapper>();
     private List<float> angles = new List<float>() { 0, 0 };
 
+    [Header("Wind"), Space]
+    [SerializeField] private ItemSpawner _windPushSpawner;
+    [SerializeField] private AudioEvent _windSpellAudtioEvent;
+    [SerializeField] private Transform _windSpellSpawnTran;
+
     [Header("Beam"), Space]
     [SerializeField] private Transform _beamTransform;
     [SerializeField] private BoxCollider2D _beamTrigger;
@@ -65,10 +70,15 @@ public class PlayerSpells : MonoBehaviour
     [SerializeField] LayerMask _toHit;
     [SerializeField] private AudioEvent _beamAttackAudtioEvent;
 
-    [Header("Wind"), Space]
-    [SerializeField] private ItemSpawner _windPushSpawner;
-    [SerializeField] private AudioEvent _windSpellAudtioEvent;
-    [SerializeField] private Transform _windSpellSpawnTran;
+    [Header("Missile"), Space]
+    [SerializeField] ItemSpawner _missileSpawner;
+    [SerializeField] float _missileCooldown;
+    [SerializeField] Transform _missileSpawnTran;
+
+    [Header("Pen Missile"), Space]
+    [SerializeField] ItemSpawner _penMissileSpawner;
+    [SerializeField] Transform _penMissileSpawnTran;
+
     //[SerializeField] List<ParticleSystem> _paritcles = new List<ParticleSystem>();
 
 
@@ -95,15 +105,25 @@ public class PlayerSpells : MonoBehaviour
             {
                 SpellTypes.WIND,
                 new WindSpell(_windSpellAudtioEvent,_loopedAudioSource,_windSpellSpawnTran,_windPushSpawner)
+            },
+            {
+                SpellTypes.PROJECTILES,
+                new MissileSpell(_missileSpawner,_missileCooldown,_missileSpawnTran,this)
+            },
+            {
+                SpellTypes.PEN,
+                new PenetratingMissileSpell(_penMissileSpawner,_penMissileSpawnTran)
             }
         };
+        SelectSpell(1);
+        SelectSpellForm(1);
     }
     // Update is called once per frame
     void Update()
     {
         
     }
-    public void SetSpellElement(ContinousSpell spell)
+    public void SetSpellElement(Spell spell)
     {
         switch (SelectedSpellType)
         {

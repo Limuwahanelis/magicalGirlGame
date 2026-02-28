@@ -21,20 +21,25 @@ public abstract class Player2DState: PlayerStateMain
     }
     public override void Attack(PlayerSpells.SpellTypes spellType, PlayerSpells.SpellForm spellForm)
     {
-        switch (spellForm)
+        if (spellType == PlayerSpells.SpellTypes.EARTH) ChangeState(Player2DPlacingConstructState.StateType);
+        else if (spellType == PlayerSpells.SpellTypes.WIND) ChangeState(Player2DCastingWindSpellState.StateType);
+        else
         {
-            case PlayerSpells.SpellForm.NORMAL:
-                {
-                    switch (spellType)
+            switch (spellForm)
+            {
+                case PlayerSpells.SpellForm.NORMAL:
                     {
-                        case PlayerSpells.SpellTypes.FIRE: ChangeState(Player2DCastingFireSpellState.StateType); break;
-                        case PlayerSpells.SpellTypes.ELECTRICYTY: ChangeState(Player2DCastingElectricitySpellState.StateType); break;
-                        case PlayerSpells.SpellTypes.WIND: ChangeState(Player2DCastingWindSpellState.StateType); break;
-                        case PlayerSpells.SpellTypes.EARTH: ChangeState(Player2DPlacingConstructState.StateType); break;
+                        switch (spellType)
+                        {
+                            case PlayerSpells.SpellTypes.FIRE: ChangeState(Player2DCastingFireSpellState.StateType); break;
+                            case PlayerSpells.SpellTypes.ELECTRICYTY: ChangeState(Player2DCastingElectricitySpellState.StateType); break;
+                        }
+                        break;
                     }
-                    break;
-                }
-            case PlayerSpells.SpellForm.BEAM: ChangeState(Player2DCastingBeamSpellState.StateType); break;
+                case PlayerSpells.SpellForm.BEAM: ChangeState(Player2DCastingBeamSpellState.StateType); break;
+                case PlayerSpells.SpellForm.PROJECTILES: ChangeState(Player2DCastingMissileSpellState.StateType); break;
+                case PlayerSpells.SpellForm.PEN: ChangeState(Player2DCastingPenetratingMissileSpellState.StateType); break;
+            }
         }
     }
     public override void Push(PushInfo pushInfo)
