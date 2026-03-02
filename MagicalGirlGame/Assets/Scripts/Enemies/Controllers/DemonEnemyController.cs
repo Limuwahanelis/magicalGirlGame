@@ -23,7 +23,7 @@ public abstract class DemonEnemyController : NPCController
 
     protected virtual void Awake()
     {
-        if (_playerTransform == null) _playerTransform = FindFirstObjectByType<PlayerController>().MainBody.transform;
+        if (_playerTransform == null) _playerTransform = FindFirstObjectByType<PlayerController2D>().MainBody.transform;
 
     }
     protected virtual void Start()

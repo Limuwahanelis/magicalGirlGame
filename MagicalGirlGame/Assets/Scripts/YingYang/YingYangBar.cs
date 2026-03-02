@@ -98,17 +98,17 @@ public class YingYangBar : HealthBar
         SerializedProperty _maxValue;
         SerializedProperty _bar;
         SerializedProperty _fill;
-        StandardHealthBar _instance;
+        YingYangBar _instance;
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
             if (GUILayout.Button("hp"))
             {
-                (target as StandardHealthBar).ReduceHP(10);
+                (target as YingYangBar).ReduceHP(10);
             }
             if (GUILayout.Button("AdjustForLength"))
             {
-                (target as StandardHealthBar).AdjustForLength();
+                (target as YingYangBar).AdjustForLength();
             }
         }
     }

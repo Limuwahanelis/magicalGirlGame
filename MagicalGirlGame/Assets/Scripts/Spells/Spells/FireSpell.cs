@@ -78,7 +78,7 @@ public class FireSpell : ContinousSpell
     {
         List<Vector2> toReturn = new List<Vector2>() { new Vector2(), new Vector2(), new Vector2() };
         Vector2 pointA = _mainBody.transform.position;
-        Vector2 mouseDir = (HelperClass.MousPosWorld- _mainBody.transform.position).normalized;
+        Vector2 mouseDir = (HelperClass.MousPosWorld2D - _mainBody.transform.position).normalized;
         Vector2 fireForwardPoint = pointA + mouseDir * (_fireRange + _fireRange * 0.15f);
         Vector2 fireForwardDir = (fireForwardPoint - (Vector2)_mainBody.transform.position);
 

@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ying yang
-  m_Shader: {fileID: -6465566751694194690, guid: e731d00ecd5047947a37754bb6aa8927, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 84180fde77220e34799e0f07e4b287eb, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -37,6 +37,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -54,7 +58,7 @@ Material:
     - _LazyFillValue: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Value: 0.628
+    - _Value: 0.842
     m_Colors:
     - _Background: {r: 0, g: 0, b: 0, a: 1}
     - _Fill: {r: 1, g: 1, b: 1, a: 1}

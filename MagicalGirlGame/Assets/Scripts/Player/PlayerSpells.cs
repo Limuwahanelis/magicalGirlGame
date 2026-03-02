@@ -142,7 +142,7 @@ public class PlayerSpells : MonoBehaviour
         Logger.Log(_selectedSpellForm);
     }
 
-    public void SetEnemyForAttack(GameObject enemy)
+    public void SetEnemyForAttack(Collider2D enemy)
     {
         if (enemy.GetComponent<IDamagable>() != null)
         {
@@ -150,14 +150,39 @@ public class PlayerSpells : MonoBehaviour
             enemy.GetComponent<IDamagable>().OnDeath += OnEnemyDied;
             Logger.Log("ADDed");
         }
+        else
+        {
+            if(enemy.attachedRigidbody !=null)
+            {
+                if(enemy.attachedRigidbody.GetComponent<IDamagable>()!=null)
+                {
+                    _damageablesInRange.Add(enemy.attachedRigidbody.GetComponent<IDamagable>());
+                    enemy.attachedRigidbody.GetComponent<IDamagable>().OnDeath += OnEnemyDied;
+                    Logger.Log("ADDed");
+                }
+            }
+        }
     }
-    public void RemoveEnemyFromAttack(GameObject enemy)
+    public void RemoveEnemyFromAttack(Collider2D enemy)
     {
         if (_damageablesInRange.Contains(enemy.GetComponent<IDamagable>()))
         {
             _damageablesInRange.Remove(enemy.GetComponent<IDamagable>());
             enemy.GetComponent<IDamagable>().OnDeath -= OnEnemyDied;
             Logger.Log("Removed");
+        }
+        else
+        {
+            if (enemy.attachedRigidbody != null)
+            {
+                if (enemy.attachedRigidbody.GetComponent<IDamagable>() != null)
+                {
+                    _damageablesInRange.Remove(enemy.attachedRigidbody.GetComponent<IDamagable>());
+                    enemy.attachedRigidbody.GetComponent<IDamagable>().OnDeath -= OnEnemyDied;
+                    Logger.Log("Removed");
+                }
+            }
+
         }
     }
     private void OnEnemyDied(IDamagable damagable, DamageInfo info)

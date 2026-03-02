@@ -17,7 +17,7 @@ public class YingYangeHealth : HealthSystem
     private float _yingYangCenter;
     private float _currentBalanceTime;
     private float _changeTimer = 0;
-    private bool _wasHit = true;
+    private bool _wasHit = false;
     override protected void Start()
     {
         base.Start();

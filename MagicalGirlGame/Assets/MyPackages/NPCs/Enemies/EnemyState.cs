@@ -3,15 +3,13 @@ using UnityEngine;
 
 public abstract class EnemyState:NPCState
 {
-    protected EnemyContext _enemyContext;
 
     public EnemyState(GetState function):base(function)
     {
     }
-
-    public virtual void SetUpState(EnemyContext context)
+    public override void SetUpState(NPCContext context)
     {
-        _enemyContext = context;
+        base.SetUpState(context);
     }
     public virtual void Attack(PlayerCombat.AttackModifiers modifier = PlayerCombat.AttackModifiers.NONE) { }
 }

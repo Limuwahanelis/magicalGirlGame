@@ -34,7 +34,7 @@ public class HealthSystem : MonoBehaviour,IDamagable
         if (_hpBar != null)
         {
             _hpBar.SetMaxHealth(_maxHP);
-            _hpBar.SetHealth(_maxHP);
+            _hpBar.SetHealth(_currentHP);
         }
 
     }
