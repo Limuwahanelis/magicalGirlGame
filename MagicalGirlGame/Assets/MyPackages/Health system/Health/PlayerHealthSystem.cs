@@ -42,5 +42,18 @@ public class PlayerHealthSystem : HealthSystem,IPushable
         _hpBar.SetHealth(_currentHP);
     }
 
+    public void LongPush(PushInfo pushInfo, ForceMode2D pushMode)
+    {
+        throw new NotImplementedException();
+    }
 
+    public void EndLongPush()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void StartLongPush()
+    {
+        throw new NotImplementedException();
+    }
 }

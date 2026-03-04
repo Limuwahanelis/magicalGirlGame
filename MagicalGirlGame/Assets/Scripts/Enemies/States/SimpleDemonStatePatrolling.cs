@@ -6,11 +6,12 @@ using UnityEngine;
 
 public class SimpleDemonStatePatrolling : EnemyState
 {
-    List<Transform> _patrolPoints= new List<Transform>();
+    List<Vector2> _patrolPoints= new List<Vector2>();
     int _index = 0;
     Vector2 _movePos;
     GlobalEnums.HorizontalDirections _moveDir;
-    
+    Vector2 rightScale =new Vector2(1,1);
+    Vector2 leftScale = new Vector2(-1,1);
     public static Type StateType { get => typeof(SimpleDemonStatePatrolling); }
     private SimpleDemonContext _context;
     public SimpleDemonStatePatrolling(GetState function) : base(function)
@@ -24,20 +25,20 @@ public class SimpleDemonStatePatrolling : EnemyState
     }
     public override void FixedUpdate()
     {
-        if (Vector2.Distance(_context.enemyTran.position, _patrolPoints[_index].position) > 0.06)
+        if (Vector2.Distance(_context.enemyTran.position, _patrolPoints[_index]) > 0.06)
         {
-            //if(_context._nextStepCheck.IsOnGround)
-            //{
-            _movePos = _context.rb.position;
-            if (_moveDir == GlobalEnums.HorizontalDirections.LEFT) _context.rb.MovePosition(_movePos + Vector2.left * _context.speed * Time.deltaTime);
-            else _context.rb.MovePosition(_movePos + Vector2.right * _context.speed * Time.deltaTime);
-            //}
-            //else
-            //{
-            //    _index++;
-            //    if(_index>_patrolPoints.Count) _index = 0;
-            //    ChangeState(SimpleDemonStateRestingAtPatrolPoint.StateType);
-            //}
+            if (_context._nextStepCheck.IsOnGround)
+            {
+                _movePos = _context.rb.position;
+                if (_moveDir == GlobalEnums.HorizontalDirections.LEFT) _context.rb.MovePosition(_movePos + Vector2.left * _context.speed * Time.deltaTime);
+                else _context.rb.MovePosition(_movePos + Vector2.right * _context.speed * Time.deltaTime);
+            }
+            else
+            {
+                _index++;
+                if (_index >= _patrolPoints.Count) _index = 0;
+                ChangeState(SimpleDemonStateRestingAtPatrolPoint.StateType);
+            }
         }
         else
         {
@@ -50,16 +51,24 @@ public class SimpleDemonStatePatrolling : EnemyState
     {
         base.SetUpState(context);
         _context = (SimpleDemonContext)context;
-        if (_patrolPoints[_index].position.x < _context.enemyTran.position.x)
+        if (_patrolPoints[_index].x < _context.enemyTran.position.x)
         {
             _moveDir = GlobalEnums.HorizontalDirections.LEFT;
+            _context.enemyTran.localScale = leftScale;
         }
-        else _moveDir = GlobalEnums.HorizontalDirections.RIGHT;
+        else
+        {
+            _moveDir = GlobalEnums.HorizontalDirections.RIGHT;
+            _context.enemyTran.localScale = rightScale;
+        }
     }
-    public void SetPatrolPoints(Transform point1,Transform point2)
+    public void SetPatrolPoints(List<Transform> points)
     {
-        _patrolPoints.Add(point1);
-        _patrolPoints.Add(point2);
+        _patrolPoints.Clear();
+        foreach (Transform t in points)
+        {
+            _patrolPoints.Add(t.position);
+        }
     }
 
     public override void InterruptState()

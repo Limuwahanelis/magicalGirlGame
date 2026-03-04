@@ -16,7 +16,7 @@ public class #SCRIPTNAME# : EnemyState
 
     }
 
-    public override void SetUpState(EnemyContext context)
+    public override void SetUpState(NPCContext context)
     {
         base.SetUpState(context);
         _context = (#ENEMYNAME#Context)context;

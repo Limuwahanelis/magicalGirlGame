@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class BeamSpell : ContinousSpell
 {
+    private readonly Beam _beam;
     private readonly Transform _beamTransform;
     private readonly List<IDamagable> _damageables;
     private readonly BoxCollider2D _beamTrigger;
@@ -73,7 +74,7 @@ public class BeamSpell : ContinousSpell
         {
             //Logger.Log("HIt");
             RaycastHit2D hit= FindClsestCol(_hit);
-            Logger.Log(hit.collider.gameObject);
+            //Logger.Log(hit.collider.gameObject);
            // Logger.
             _beamTransform.up = beamDir;
             float beamLength = ((Vector3)hit.rigidbody.position - _beamTransform.position).magnitude;

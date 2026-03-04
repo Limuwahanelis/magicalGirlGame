@@ -15,7 +15,8 @@ public abstract class NPCState
     {
         _npcContext = context;
     }
-
+    public virtual void Push() { }
+    public virtual void LongPush() { }
     public abstract void Update();
     public virtual void FixedUpdate() { }
     public virtual void Hit(DamageInfo damageInfo) { }//ChangeState(_enemyContext.enemyHitState.GetType()); }

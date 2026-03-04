@@ -5,4 +5,5 @@ public class EnemyContext:NPCContext
 {
     public Transform playerTran;
     public Transform enemyTran;
+    public CommonChecks2D groundCheck;
 }

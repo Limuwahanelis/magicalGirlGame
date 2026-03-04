@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerChecks2D : MonoBehaviour
+public class CommonChecks2D : MonoBehaviour
 {
     [SerializeField] bool _debug;
     public RaycastHit2D GroundHit => _groundHit;

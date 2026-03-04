@@ -10,6 +10,11 @@ public class EnemyGroundCheck : MonoBehaviour
     private bool _isOnGround;
 
     // Update is called once per frame
+    private void Awake()
+    {
+        if (Physics2D.Raycast(_groundCheckTran.position, Vector2.down, _groundCheckLength, _groundMask)) _isOnGround = true;
+        else _isOnGround = false;
+    }
     void Update()
     {
         if(Physics2D.Raycast(_groundCheckTran.position,Vector2.down,_groundCheckLength,_groundMask)) _isOnGround = true;

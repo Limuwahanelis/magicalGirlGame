@@ -13,7 +13,7 @@ public class PlayerController2D : PlayerControllerMain
     [SerializeField] AnimationManager _playerAnimationManager;
     [SerializeField] PlayerMovement2D _playerMovement;
     [SerializeField] AudioEventPlayer _playerAudioEventPlayer;
-    [SerializeField] PlayerChecks2D _playerChecks;
+    [SerializeField] CommonChecks2D _playerChecks;
     [SerializeField] PlayerSpells _spells;
     [SerializeField] ConstructPlacement _constructPlacement;
 

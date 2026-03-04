@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SlopeDetection : MonoBehaviour
 {
-    [SerializeField] PlayerChecks2D _playerChecks;
+    [SerializeField] CommonChecks2D _playerChecks;
     [SerializeField] float _maxIncline;
     [SerializeField] Transform _mainBody;
     public bool CanWalkOnSlope()

@@ -10,7 +10,7 @@ public class Player2DContext
     public AnimationManager animationManager;
     public PlayerMovement2D playerMovement;
     public AudioEventPlayer audioEventPlayer;
-    public PlayerChecks2D checks;
+    public CommonChecks2D checks;
     public PlayerSpells spells;
     public ConstructPlacement constructPlacement;
 

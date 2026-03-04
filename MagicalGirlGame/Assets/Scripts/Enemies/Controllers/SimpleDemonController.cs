@@ -5,11 +5,11 @@ using System.Linq;
 
 public class SimpleDemonController : DemonEnemyController
 {
-    [SerializeField] Transform patrolPoint1;
-    [SerializeField] Transform patrolPoint2;
+    [SerializeField] List<Transform> _patrolPoints;
     [SerializeField] Rigidbody2D _rb;
     [SerializeField] float _Speed;
     [SerializeField] EnemyGroundCheck _nextStepCheck;
+    [SerializeField] CommonChecks2D _groundChecks;
     [SerializeField] float _timeToRest;
     SimpleDemonContext _context;
     protected override void Initialize()
@@ -25,7 +25,7 @@ public class SimpleDemonController : DemonEnemyController
         }
 
         SimpleDemonStatePatrolling patrolState = GetState(SimpleDemonStatePatrolling.StateType) as SimpleDemonStatePatrolling;
-        patrolState.SetPatrolPoints(patrolPoint1,patrolPoint2);
+        patrolState.SetPatrolPoints(_patrolPoints);
          _context = new SimpleDemonContext()
         {
             ChangeNPCState = ChangeState,
@@ -34,10 +34,25 @@ public class SimpleDemonController : DemonEnemyController
             speed = _Speed,
             _nextStepCheck = _nextStepCheck,
             timeToRestAtPoint = _timeToRest,
+            groundCheck = _groundChecks,
+            patrolPoints = _patrolPoints,
             rb = _rb
         };
         EnemyState newState = GetState(Type.GetType(_initialStateType));
         newState.SetUpState(_context);
         _currentNPCState = newState;
+    }
+
+    public void Push()
+    {
+        EnemyState newState = GetState(SimpleDemonStateLongPush.StateType);
+        newState.SetUpState(_context);
+        ChangeState(newState);
+    }
+    public void EndLongPush()
+    {
+        EnemyState newState = GetState(SimpleDemonStateFalling.StateType);
+        newState.SetUpState(_context);
+        ChangeState(newState);
     }
 }
