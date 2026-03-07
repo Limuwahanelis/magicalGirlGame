@@ -22,7 +22,7 @@ public class WindPush : MonoBehaviour
                 IPushable pushable = collision.attachedRigidbody.GetComponent<IPushable>();
                 if(pushable!=null)
                 {
-                    pushable.Push(new PushInfo(transform.position, _pushForce));
+                    pushable.Push(new PushInfo(transform.position, _pushForce, Vector2.zero));
                     _collidedObjects.Add(collision);
                 }
             }

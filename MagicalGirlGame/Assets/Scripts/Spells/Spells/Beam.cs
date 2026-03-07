@@ -8,7 +8,7 @@ public class Beam : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _pushInfo = new PushInfo(transform.position, _pushForce);
+        _pushInfo = new PushInfo(transform.position, _pushForce,Vector2.zero);
     }
 
     // Update is called once per frame
@@ -26,7 +26,7 @@ public class Beam : MonoBehaviour
                 pushable = collision.attachedRigidbody.GetComponent<IPushable>();
                 if(pushable!=null)
                 {
-                    if(HelperClass.IsInLayerMask(collision.gameObject,_toHitMask)) pushable.StartLongPush();
+                    if(HelperClass.IsInLayerMask(collision.gameObject,_toHitMask)) pushable.StartLongPushMove();
                 }
                 
             }
@@ -40,10 +40,11 @@ public class Beam : MonoBehaviour
             if (collision.attachedRigidbody != null)
             {
                 _pushInfo.pushPosition = transform.position;
+                _pushInfo.pushDir = (Vector2)(collision.transform.position - transform.position).normalized;
                 pushable = collision.attachedRigidbody.GetComponent<IPushable>();
                 if (pushable != null)
                 {
-                    if (HelperClass.IsInLayerMask(collision.gameObject, _toHitMask)) pushable.LongPush(_pushInfo, ForceMode2D.Force);
+                    if (HelperClass.IsInLayerMask(collision.gameObject, _toHitMask)) pushable.LongPushMove(_pushInfo);
 
                 }
 
@@ -61,7 +62,7 @@ public class Beam : MonoBehaviour
                 pushable = collision.attachedRigidbody.GetComponent<IPushable>();
                 if (pushable != null)
                 {
-                    if (HelperClass.IsInLayerMask(collision.gameObject, _toHitMask)) pushable.EndLongPush();
+                    if (HelperClass.IsInLayerMask(collision.gameObject, _toHitMask)) pushable.EndLongPushMove();
 
                 }
 

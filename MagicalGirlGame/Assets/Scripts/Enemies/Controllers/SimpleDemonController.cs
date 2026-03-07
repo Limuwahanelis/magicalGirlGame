@@ -62,9 +62,9 @@ public class SimpleDemonController : DemonEnemyController
 
     public void PlayerDetected()
     {
-        EnemyState newState = GetState(SimpleDemonStateAttackingPlayer.StateType);
-        newState.SetUpState(_context);
-        _currentNPCState = newState;
+        //EnemyState newState = GetState(SimpleDemonStateAttackingPlayer.StateType);
+        //newState.SetUpState(_context);
+        //_currentNPCState = newState;
     }
     private void OnDestroy()
     {

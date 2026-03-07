@@ -24,6 +24,7 @@ public class PlayerSpells : MonoBehaviour
     public SpellForm SelectedSpellForm => _selectedSpellForm;
 
     [SerializeField] AudioSource _loopedAudioSource;
+    [SerializeField] Transform _playerMainBOdy;
 
     [Header("Fire"),Space]
     [SerializeField]private ParticleSystem _fireParticles;
@@ -90,7 +91,7 @@ public class PlayerSpells : MonoBehaviour
         {
             {
                 SpellTypes.FIRE,
-                new FireSpell(this, _fireParticles, _damageablesInRange, _fireTrigger, transform, _fireRange, _fireAngle, _fireElementInfo.Damage, _fireElementInfo.AttackCooldown
+                new FireSpell(this, _fireParticles, _damageablesInRange, _fireTrigger, _playerMainBOdy, _fireRange, _fireAngle, _fireElementInfo.Damage, _fireElementInfo.AttackCooldown
             , _fireAttackAudioEvent, _loopedAudioSource,2)
             },
             {

@@ -25,6 +25,7 @@ public class SimpleDemonStateFalling : EnemyState
     {
         base.SetUpState(context);
         _context = (SimpleDemonContext)context;
+        _context.rb.bodyType = RigidbodyType2D.Dynamic;
     }
 
     public override void InterruptState()

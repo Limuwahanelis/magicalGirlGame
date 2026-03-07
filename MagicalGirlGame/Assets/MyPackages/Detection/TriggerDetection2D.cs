@@ -28,7 +28,7 @@ public class TriggerDetection2D : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 #if UNITY_EDITOR
-        Logger.Log("Detected: " + collision.gameObject.name);
+        if(_debug) Logger.Log($" {gameObject.name} Detected: " + collision.gameObject.name);
 #endif
         TriggerDetectable detectable = null;
 
@@ -57,7 +57,7 @@ public class TriggerDetection2D : MonoBehaviour
         if (!_collidersInStay.Contains(other))
         {
 #if UNITY_EDITOR
-            Logger.Log("Detected: " + other.gameObject.name);
+            if (_debug) Logger.Log("Detected: " + other.gameObject.name);
 #endif
             _collidersInStay.Add(other);
             OnColliderDetected?.Invoke(other);
@@ -68,7 +68,7 @@ public class TriggerDetection2D : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
 #if UNITY_EDITOR
-        Logger.Log("Left " + other.gameObject.name);
+        if (_debug) Logger.Log("Left " + other.gameObject.name);
 #endif
         TriggerDetectable detectable = other.GetComponent<TriggerDetectable>();
         if (detectable != null && _detectables.Contains(detectable))
@@ -86,7 +86,7 @@ public class TriggerDetection2D : MonoBehaviour
         Collider2D col = detectable.GetComponent<Collider2D>();
         if (_collidersInStay.Contains(col)) _collidersInStay.Remove(col);
 #if UNITY_EDITOR
-        Logger.Log("Left " + col.gameObject.name);
+        if (_debug) Logger.Log("Left " + col.gameObject.name);
 #endif
         OnColliderLeft?.Invoke(col);
     }

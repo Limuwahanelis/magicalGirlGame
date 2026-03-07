@@ -63,19 +63,13 @@ public class BeamSpell : ContinousSpell
     private void ShootBeam()
     {
         Vector2 beamDir = HelperClass.MousPosWorld - _beamTransform.position;
-        float distance = beamDir.magnitude;
+        float distance = 20f;
         beamDir = beamDir.normalized;
         float angle = Vector2.SignedAngle(Vector2.right, beamDir);
         _hit = Physics2D.BoxCastAll(_beamTransform.position, _beamTrigger.size, Vector2.SignedAngle(Vector2.right, beamDir), beamDir, 20f, _layerMaskToHit);
-       // Logger.Log(angle);
-        //Physics2D.RaycastAll()
-        //_hit = Physics2D.Raycast(_beamTransform.position, beamDir, 20f, _layerMaskToHit);
         if (_hit.Length>0)
         {
-            //Logger.Log("HIt");
             RaycastHit2D hit= FindClsestCol(_hit);
-            //Logger.Log(hit.collider.gameObject);
-           // Logger.
             _beamTransform.up = beamDir;
             float beamLength = ((Vector3)hit.rigidbody.position - _beamTransform.position).magnitude;
             _beamTransform.localScale = new Vector2(_beamTransform.localScale.x, beamLength);

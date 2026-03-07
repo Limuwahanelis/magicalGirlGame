@@ -42,7 +42,6 @@ public class SimpleDemonStateAttackingPlayer : EnemyState
     }
     private void StartChase()
     {
-        Logger.Log("CHASE");
         ChangeState(SimpleDemonStateChasingPlayer.StateType);
     }
 }

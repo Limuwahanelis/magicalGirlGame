@@ -108,17 +108,17 @@ public class PlayerInputHandler : MonoBehaviour
                 if (context.interaction is HoldInteraction)
                 {
                     _player.CurrentPlayerState.Attack(_playerSpell.SelectedSpellType, _playerSpell.SelectedSpellForm);
-                    Logger.Log("Hold");
+                   // Logger.Log("Hold");
                 }
                 else
                 {
-                    Logger.Log("Press");
+                   // Logger.Log("Press");
                 }
                 break;
 
             case InputActionPhase.Canceled:
                 _player.CurrentPlayerState.EndAttack();
-                Logger.Log("Cancel");
+                //Logger.Log("Cancel");
                 break;
         }
     }

@@ -20,7 +20,7 @@ public class SimpleDemonStateLongPush : EnemyState
     {
         base.SetUpState(context);
         _context = (SimpleDemonContext)context;
-        _context.rb.bodyType = RigidbodyType2D.Dynamic;
+        //_context.rb.bodyType = RigidbodyType2D.Dynamic;
     }
 
     public override void InterruptState()

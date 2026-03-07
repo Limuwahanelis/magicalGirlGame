@@ -8,6 +8,7 @@ public class PushInfo
     public Collider2D[] involvedColliders;
     public DamageInfo.DamageType pushType;
     public float pushForce;
+    public Vector2 pushDir;
     public PushInfo(Vector3 pushpos, Collider2D[] involvedColliders=null, DamageInfo.DamageType pushType=DamageInfo.DamageType.NONE,float pushForce=-1) 
     {
         this.pushPosition = pushpos;
@@ -15,11 +16,12 @@ public class PushInfo
         this.pushType = pushType;
         this.pushForce = pushForce;
     }
-    public PushInfo(Vector3 pushpos, float pushForce)
+    public PushInfo(Vector3 pushpos, float pushForce, Vector2 pushDir)
     {
         this.pushPosition = pushpos;
         this.pushForce = pushForce;
         pushType = DamageInfo.DamageType.NONE;
         involvedColliders = null;
+        this.pushDir = pushDir;
     }
 }

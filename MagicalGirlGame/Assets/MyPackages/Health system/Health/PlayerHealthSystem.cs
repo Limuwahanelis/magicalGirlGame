@@ -56,4 +56,19 @@ public class PlayerHealthSystem : HealthSystem,IPushable
     {
         throw new NotImplementedException();
     }
+
+    public void LongPushMove(PushInfo pushInfo)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void StartLongPushMove()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void EndLongPushMove()
+    {
+        throw new NotImplementedException();
+    }
 }

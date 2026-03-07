@@ -31,6 +31,11 @@ public class PlayerMovement2D : MonoBehaviour
     private GlobalEnums.HorizontalDirections _newPlayerDirection;
     private GlobalEnums.HorizontalDirections _oldPlayerDirection;
     private float _previousDirection;
+
+    private void Update()
+    {
+        RotatePlayerWithMouse();
+    }
     public void MoveInAir(Vector2 direction,bool canRotate)
     {
         if (direction.x != 0)
@@ -56,22 +61,11 @@ public class PlayerMovement2D : MonoBehaviour
         if (!_slopeDetection.CanWalkOnSlope()) return;
         if (direction.x != 0)
         {
-            _oldPlayerDirection = _newPlayerDirection;
-            _newPlayerDirection = (GlobalEnums.HorizontalDirections)direction.x;
-            Vector2 moveVector = _rb.position + new Vector2(_player.MainBody.transform.right.x * _flipSide * _speed * Time.deltaTime, 0);
+            //_oldPlayerDirection = _newPlayerDirection;
+            //_newPlayerDirection = (GlobalEnums.HorizontalDirections)direction.x;
+            Vector2 moveVector = _rb.position + new Vector2(direction.x * _speed * Time.deltaTime, 0);
             moveVector.y = ( groundRayHitPoint.y);
             _rb.MovePosition(moveVector);
-            if (direction.x > 0)
-            {
-                _flipSide = 1;
-                _player.MainBody.transform.localScale = new Vector3(_flipSide, _player.MainBody.transform.localScale.y, _player.MainBody.transform.localScale.z);
-            }
-            if (direction.x < 0)
-            {
-                _flipSide = -1;
-                _player.MainBody.transform.localScale = new Vector3(_flipSide, _player.MainBody.transform.localScale.y, _player.MainBody.transform.localScale.z);
-            }
-            _previousDirection = direction.x;
         }
         else
         {
@@ -94,12 +88,12 @@ public class PlayerMovement2D : MonoBehaviour
             _rb.linearVelocity = new Vector2(direction.x * _speed , _rb.linearVelocity.y);
             if (direction.x > 0)
             {
-                _flipSide = 1;
+               // _flipSide = 1;
                 _player.MainBody.transform.localScale = new Vector3(_flipSide, _player.MainBody.transform.localScale.y, _player.MainBody.transform.localScale.z);
             }
             if (direction.x < 0)
             {
-                _flipSide = -1;
+               // _flipSide = -1;
                 _player.MainBody.transform.localScale = new Vector3(_flipSide, _player.MainBody.transform.localScale.y, _player.MainBody.transform.localScale.z);
             }
             _previousDirection = direction.x;
@@ -126,6 +120,33 @@ public class PlayerMovement2D : MonoBehaviour
         if(pushInfo.pushForce==-1) _rb.AddForce(pushDirection * _normalPushForce, ForceMode2D.Impulse);
         else _rb.AddForce(pushDirection * pushInfo.pushForce, ForceMode2D.Impulse);
 
+    }
+
+    public void RotatePlayerWithMouse()
+    {
+        _oldPlayerDirection = _newPlayerDirection;
+
+        //if (HelperClass.MousePos.x > 0 && HelperClass.MousePos.x < Screen.width && HelperClass.MousePos.y > 0 && HelperClass.MousePos.y < Screen.height)
+        //{
+        _newPlayerDirection = (HelperClass.MousPosWorld2D.x < _player.MainBody.transform.position.x) ? GlobalEnums.HorizontalDirections.LEFT : GlobalEnums.HorizontalDirections.RIGHT;
+        //}
+
+
+        if (_newPlayerDirection != _oldPlayerDirection)
+        {
+
+            if (_newPlayerDirection == GlobalEnums.HorizontalDirections.RIGHT)
+            {
+                _flipSide = 1;
+                _player.MainBody.transform.localScale = new Vector3(_flipSide, _player.MainBody.transform.localScale.y, _player.MainBody.transform.localScale.z);
+            }
+            if (_newPlayerDirection == GlobalEnums.HorizontalDirections.LEFT)
+            {
+                _flipSide = -1;
+                _player.MainBody.transform.localScale = new Vector3(_flipSide, _player.MainBody.transform.localScale.y, _player.MainBody.transform.localScale.z);
+
+            }
+        }
     }
     public void SetRBMaterial(PhysicMaterialType type)
     {
