@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class PlayerDetection : MonoBehaviour
 {
-    private Action OnPlayerDetected;
-    private Action OnPlayerLeft;
+    public Action OnPlayerDetected;
+    public Action OnPlayerLeftAttackrange;
+    public Action OnPlayerLeft;
 
     public void PlayerInSight(Collider2D col)
     {
@@ -13,5 +14,9 @@ public class PlayerDetection : MonoBehaviour
     public void PlayerLeftRange(Collider2D col)
     {
         OnPlayerLeft?.Invoke();
+    }
+    public void PlayerLeftAttackrange (Collider2D col)
+    {
+        OnPlayerLeftAttackrange?.Invoke();
     }
 }

@@ -10,6 +10,7 @@ public class SimpleDemonController : DemonEnemyController
     [SerializeField] float _Speed;
     [SerializeField] EnemyGroundCheck _nextStepCheck;
     [SerializeField] CommonChecks2D _groundChecks;
+    [SerializeField] PlayerDetection _playerDetection;
     [SerializeField] float _timeToRest;
     SimpleDemonContext _context;
     protected override void Initialize()
@@ -36,11 +37,14 @@ public class SimpleDemonController : DemonEnemyController
             timeToRestAtPoint = _timeToRest,
             groundCheck = _groundChecks,
             patrolPoints = _patrolPoints,
+            playerDetection = _playerDetection,
             rb = _rb
         };
         EnemyState newState = GetState(Type.GetType(_initialStateType));
         newState.SetUpState(_context);
         _currentNPCState = newState;
+
+        _playerDetection.OnPlayerDetected += PlayerDetected;
     }
 
     public void Push()
@@ -54,5 +58,16 @@ public class SimpleDemonController : DemonEnemyController
         EnemyState newState = GetState(SimpleDemonStateFalling.StateType);
         newState.SetUpState(_context);
         ChangeState(newState);
+    }
+
+    public void PlayerDetected()
+    {
+        EnemyState newState = GetState(SimpleDemonStateAttackingPlayer.StateType);
+        newState.SetUpState(_context);
+        _currentNPCState = newState;
+    }
+    private void OnDestroy()
+    {
+        _playerDetection.OnPlayerDetected -= PlayerDetected;
     }
 }

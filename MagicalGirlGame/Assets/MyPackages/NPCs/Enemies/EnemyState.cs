@@ -12,4 +12,7 @@ public abstract class EnemyState:NPCState
         base.SetUpState(context);
     }
     public virtual void Attack(PlayerCombat.AttackModifiers modifier = PlayerCombat.AttackModifiers.NONE) { }
+    public virtual void PlayerDetected() { }
+    public virtual void PlayerLeftDetection() { }
+    public virtual void PlayerLeftAttackRange() { }
 }
